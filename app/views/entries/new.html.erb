@@ -1,55 +1,64 @@
-<h1>New Entry for <%= @place.name %></h1>
+<!-- app/views/entries/new.html.erb -->
+<h1 class="mb-4">New Entry for <%= @place.name %></h1>
 
-<form action="<%= place_entries_path(@place) %>" method="post" enctype="multipart/form-data">
+<form action="<%= place_entries_path(@place) %>"
+      method="post"
+      enctype="multipart/form-data">
   <input
     type="hidden"
     name="authenticity_token"
     value="<%= form_authenticity_token %>"
   >
 
-  <p>
-    <label for="title_input">Title</label><br>
+  <div class="mb-3">
+    <label for="title_input" class="form-label">Title</label>
     <input
       type="text"
       name="title"
       id="title_input"
+      class="form-control"
       required
     >
-  </p>
+  </div>
 
-  <p>
-    <label for="description_input">Description</label><br>
+  <div class="mb-3">
+    <label for="description_input" class="form-label">Description</label>
     <textarea
       name="description"
       id="description_input"
       rows="4"
+      class="form-control"
       required
     ></textarea>
-  </p>
+  </div>
 
-  <p>
-    <label for="occurred_on_input">Occurred On</label><br>
+  <div class="mb-3">
+    <label for="occurred_on_input" class="form-label">Occurred On</label>
     <input
       type="date"
       name="occurred_on"
       id="occurred_on_input"
+      class="form-control"
       required
     >
-  </p>
+  </div>
 
-  <p>
-    <label for="image_input">Optional Photo</label><br>
+  <div class="mb-3">
+    <label for="image_input" class="form-label">Optional Photo</label>
     <input
       type="file"
       name="image"
       id="image_input"
+      class="form-control"
       accept="image/*"
     >
-  </p>
+  </div>
 
-  <button type="submit">Save Entry</button>
+  <div class="d-flex align-items-center">
+    <button type="submit" class="btn btn-primary me-3">Save Entry</button>
+    <%= link_to "Cancel",
+        place_path(@place),
+        class: "btn btn-link" %>
+  </div>
 </form>
 
-<p>
-  <a href="<%= place_path(@place) %>">Cancel</a>
-</p>

@@ -1,11 +1,16 @@
-<h1>Places</h1>
+<h1 class="mb-4">Places</h1>
 
-<ul>
-  <% for place in @places %>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+<%= link_to "New Place",
+    new_place_path,
+    class: "btn btn-outline-dark btn-lg mb-4" %>
+
+<ul class="list-unstyled">
+  <% @places.each do |place| %>
+    <li class="mb-2">
+      <%= link_to place.name,
+          place_path(place),
+          class: "fs-5 text-decoration-underline" %>
+    </li>
   <% end %>
 </ul>
 
-<p>
-  <a href="/places/new">New place</a>
-</p>

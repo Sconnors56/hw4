@@ -1,17 +1,36 @@
-<h1><%= @place["name"] %></h1>
+<h1 class="mb-4"><%= @place.name %></h1>
 
-<h2>My Entries</h2>
-<% for entry in @entries %>
-  <h3><%= entry["title"] %></h3>
-  <h4><%= entry["occurred_on"] %></h4>
-  <p><%= entry["description"] %></p>
-<% end %>
+<%= link_to "New Post", new_place_entry_path(@place),
+    class: "btn btn-outline-secondary mb-4" %>
 
-<p>
-  <%= link_to "New Entry", new_place_entry_path(@place) %>
-</p>
+<div class="row">
+  <% @entries.each do |entry| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <!-- Title & Date -->
+        <div class="card-body">
+          <h5 class="card-title mb-1"><%= entry.title %></h5>
+          <h6 class="card-subtitle text-muted">
+            <%= entry.occurred_on.strftime("%Y-%m-%d") %>
+          </h6>
+        </div>
+
+       <!-- Fixed‐ratio image container (4:3) -->
+<div class="ratio ratio-4x3 bg-white">
+  <% if entry.image.attached? %>
+    <%= image_tag url_for(entry.image),
+        class: "img-fluid",
+        style: "object-fit: cover;" %>
+  <% end %>
+</div>
 
 
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
+        <!-- Description -->
+        <div class="card-body">
+          <p class="card-text"><%= entry.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

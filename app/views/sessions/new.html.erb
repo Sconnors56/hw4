@@ -1,32 +1,34 @@
-<h1>Login</h1>
+<h1 class="mb-4">Login</h1>
 
-<form action="/sessions" method="post">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>"
-  >
+<form action="/sessions" method="post" class="w-50">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <p>
-    <label for="email_input">Email</label><br>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
     <input
-      type="text"
+      type="email"
       name="email"
-      id="email_input"
+      id="email"
+      class="form-control"
       required
     >
-  </p>
+  </div>
 
-  <p>
-    <label for="password_input">Password</label><br>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
     <input
       type="password"
       name="password"
-      id="password_input"
+      id="password"
+      class="form-control"
       required
     >
-  </p>
+  </div>
 
-  <button type="submit">Login</button>
+  <div class="d-flex align-items-center">
+    <button type="submit" class="btn btn-primary me-3">Login</button>
+    <%= link_to "Signup", signup_path, class: "btn btn-link" %>
+  </div>
 </form>
+
 

@@ -1,10 +1,19 @@
-<h1>New Place</h1>
+<h1 class="mb-4">New Place</h1>
 
-<form action="/places" method="post">
-  <p>
-    <label for="name_input">Name</label>
-    <input type="text" name="name" id="name_input">
-  </p>
+<form action="<%= places_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <button>Save</button>
+  <div class="mb-3">
+    <label for="place_name" class="form-label">Place Name</label>
+    <input
+      type="text"
+      name="name"
+      id="place_name"
+      class="form-control"
+      required
+    >
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create Place</button>
+  <%= link_to "Cancel", places_path, class: "btn btn-link ms-3" %>
 </form>
