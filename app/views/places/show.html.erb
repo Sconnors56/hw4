@@ -8,8 +8,9 @@
 <% end %>
 
 <p>
-  <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+  <%= link_to "New Entry", new_place_entry_path(@place) %>
 </p>
+
 
 <p>
   <a href="/places">Back to All Places</a>
